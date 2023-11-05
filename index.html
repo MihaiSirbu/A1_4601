@@ -1,0 +1,34 @@
+<!-- Mihai Sirbu -->
+
+<!-- page is very simple, essentially 1 form + 1 area called "results" to add our results later -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine</title>
+</head>
+<body>
+    <form id="searchForm" action="/fruits" method="GET">
+        <input type="text" name="q" placeholder="Search...">
+        <select name="site">
+            <option value="fruits">Fruits</option>
+            <option value="personal">Personal</option>
+        </select>
+        <label for="boost">Boost with PageRank:</label>
+        <input type="checkbox" name="boost" value="true">
+        <label for="limit">Result limit:</label>
+        <input type="number" name="limit" min="1" max="50" value="10">
+        <button type="submit">Search</button>
+    </form>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function() {
+            var site = document.querySelector("select[name='site']").value;
+            this.action = '/' + site;
+        });
+    </script>
+    <div id="results">
+    </div>
+</body>
+</html>
